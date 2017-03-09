@@ -55,6 +55,9 @@ storiesOf('DateTimeRangePicker (DTRP)', module)
   .addWithInfo('default', () => (
     <DateTimeRangePickerWrapper />
   ))
+  .addWithInfo('3 months', () => (
+    <DateTimeRangePickerWrapper numberOfMonths={3} />
+  ))
   .addWithInfo('hidden with display: none', () => (
     <TestWrapper />
   ))
