@@ -15,7 +15,7 @@ import getResponsiveContainerStyles from '../utils/getResponsiveContainerStyles'
 import isInclusivelyAfterDay from '../utils/isInclusivelyAfterDay';
 
 import DateRangePickerInputController from './DateRangePickerInputController';
-import DayPickerRangeController from './DayPickerRangeController';
+import DayTimePickerRangeController from './DayTimePickerRangeController';
 
 import CloseButton from '../svg/close.svg';
 
@@ -237,7 +237,7 @@ export default class DateTimeRangePicker extends React.Component {
         className={this.getDayPickerContainerClasses()}
         style={dayPickerContainerStyles}
       >
-        <DayPickerRangeController
+        <DayTimePickerRangeController
           ref={(ref) => { this.dayPicker = ref; }}
           orientation={orientation}
           enableOutsideDays={enableOutsideDays}
