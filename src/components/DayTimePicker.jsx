@@ -475,8 +475,15 @@ export default class DayTimePicker extends React.Component {
             {verticalScrollable && this.renderNavigation()}
           </div>
 
-          <div className="DayTimePicker">
-              // THE HOURS SHOULD BE ADD HERE
+          <div className="DayTimePicker__times" style={{padding: "24px", display: "flex"}}>
+              <div className="DayTimePicker__start-time">
+                  <label>Início:</label>
+                  <input type="time" />
+              </div>
+              <div className="DayTimePicker__end-time">
+                  <label>Fim:</label>
+                  <input type="time" />
+              </div>
           </div>
         </OutsideClickHandler>
       </div>

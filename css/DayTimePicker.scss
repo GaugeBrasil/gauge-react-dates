@@ -1,0 +1,18 @@
+@import 'variables';
+
+.DayTimePicker__times {
+
+    .DayTimePicker__start-time,
+    .DayTimePicker__end-time {
+        & input {
+            margin-left: 8px;
+            height: 30px;
+            border-radius: 5px;
+            border: 1px solid $react-dates-color-gray-lighter;
+        }
+    }
+
+    .DayTimePicker__start-time {
+        margin-right: 24px;
+    }
+}
