@@ -1,14 +1,20 @@
 @import 'variables';
 
 .DayTimePicker__times {
+    color: $react-dates-color-text;
 
     .DayTimePicker__start-time,
     .DayTimePicker__end-time {
+        font-family: Helvetica, sans-serif;;
+        font-size: 16px;
+
         & input {
             margin-left: 8px;
-            height: 30px;
+            padding: 8px 0 8px 8px;
             border-radius: 5px;
             border: 1px solid $react-dates-color-gray-lighter;
+            font-size: 14px;
+            color: $react-dates-color-text;
         }
     }
 
