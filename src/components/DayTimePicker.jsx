@@ -158,6 +158,7 @@ export default class DayTimePicker extends React.Component {
     this.onNextMonthClick = this.onNextMonthClick.bind(this);
     this.multiplyScrollableMonths = this.multiplyScrollableMonths.bind(this);
     this.updateStateAfterMonthTransition = this.updateStateAfterMonthTransition.bind(this);
+    this.changeTime = this.changeTime.bind(this);
   }
 
   componentDidMount() {
@@ -497,7 +498,7 @@ export default class DayTimePicker extends React.Component {
                       type="time"
                       name="endTime"
                       value={this.state.endTime}
-                      onChange={this.changeTime.bind(this)}
+                      onChange={this.changeTime}
                     />
               </div>
           </div>
