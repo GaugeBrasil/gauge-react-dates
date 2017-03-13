@@ -320,6 +320,7 @@ export default class DayTimePicker extends React.Component {
   }
 
   changeTime(event) {
+    console.log(event.target.value)
     this.setState({[event.target.name]: event.target.value})
   }
 
@@ -488,6 +489,7 @@ export default class DayTimePicker extends React.Component {
                   <input
                     type="time"
                     name="startTime"
+                    maxLength="5"
                     value={this.state.startTime}
                     onChange={this.changeTime.bind(this)}
                   />
@@ -497,6 +499,7 @@ export default class DayTimePicker extends React.Component {
                     <input
                       type="time"
                       name="endTime"
+                      maxLength="5"
                       value={this.state.endTime}
                       onChange={this.changeTime}
                     />
