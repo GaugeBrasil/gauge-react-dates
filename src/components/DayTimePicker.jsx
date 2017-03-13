@@ -48,6 +48,7 @@ const propTypes = forbidExtraProps({
   modifiers: PropTypes.object,
   renderDay: PropTypes.func,
   onDayClick: PropTypes.func,
+  onTimeChange: PropTypes.func,
   onDayMouseEnter: PropTypes.func,
   onDayMouseLeave: PropTypes.func,
 
@@ -150,15 +151,15 @@ export default class DayTimePicker extends React.Component {
       monthTransition: null,
       translationValue: 0,
       scrollableMonthMultiple: 1,
-      startTime: '00:00',
-      endTime: '00:00'
+      startTime: '',
+      endTime: ''
     };
 
     this.onPrevMonthClick = this.onPrevMonthClick.bind(this);
     this.onNextMonthClick = this.onNextMonthClick.bind(this);
     this.multiplyScrollableMonths = this.multiplyScrollableMonths.bind(this);
     this.updateStateAfterMonthTransition = this.updateStateAfterMonthTransition.bind(this);
-    this.changeTime = this.changeTime.bind(this);
+    this.onTimeChange = this.onTimeChange.bind(this);
   }
 
   componentDidMount() {
@@ -319,9 +320,9 @@ export default class DayTimePicker extends React.Component {
     );
   }
 
-  changeTime(event) {
-    console.log(event.target.value)
-    this.setState({[event.target.name]: event.target.value})
+  onTimeChange(e) {
+    this.setState({[e.target.name]: e.target.value});
+    this.props.onTimeChange(e.target.value, e);
   }
 
   renderNavigation() {
@@ -491,7 +492,7 @@ export default class DayTimePicker extends React.Component {
                     name="startTime"
                     maxLength="5"
                     value={this.state.startTime}
-                    onChange={this.changeTime.bind(this)}
+                    onChange={this.onTimeChange}
                   />
               </div>
               <div className="DayTimePicker__end-time">
@@ -501,7 +502,7 @@ export default class DayTimePicker extends React.Component {
                       name="endTime"
                       maxLength="5"
                       value={this.state.endTime}
-                      onChange={this.changeTime}
+                      onChange={this.onTimeChange}
                     />
               </div>
           </div>
