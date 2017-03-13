@@ -150,6 +150,8 @@ export default class DayTimePicker extends React.Component {
       monthTransition: null,
       translationValue: 0,
       scrollableMonthMultiple: 1,
+      startTime: '00:00',
+      endTime: '00:00'
     };
 
     this.onPrevMonthClick = this.onPrevMonthClick.bind(this);
@@ -316,6 +318,10 @@ export default class DayTimePicker extends React.Component {
     );
   }
 
+  changeTime(event) {
+    this.setState({[event.target.name]: event.target.value})
+  }
+
   renderNavigation() {
     const {
       navPrev,
@@ -478,11 +484,21 @@ export default class DayTimePicker extends React.Component {
           <div className="DayTimePicker__times">
               <div className="DayTimePicker__start-time">
                   <label>Início:</label>
-                  <input type="time" />
+                  <input
+                    type="time"
+                    name="startTime"
+                    value={this.state.startTime}
+                    onChange={this.changeTime.bind(this)}
+                  />
               </div>
               <div className="DayTimePicker__end-time">
                   <label>Fim:</label>
-                  <input type="time" />
+                    <input
+                      type="time"
+                      name="endTime"
+                      value={this.state.endTime}
+                      onChange={this.changeTime.bind(this)}
+                    />
               </div>
           </div>
         </OutsideClickHandler>
