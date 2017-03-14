@@ -230,42 +230,38 @@ export default class DayTimePickerRangeController extends React.Component {
   }
 
   isTimeBlocked() {
-    if (this.props.startDate && this.props.endDate)
-      return false
-    else
-      return true;
+    if (this.props.startDate && this.props.endDate) {
+      return false;
+    }
+    return true;
   }
 
   handleTimesChange(e) {
-    let hour, minute, time, arrTime;
-    let {
+    const {
       startDate,
       endDate,
-      onDatesChange
+      onDatesChange,
     } = this.props;
 
-    time = e.target.value;
-    arrTime = time.split(':');
-    hour = arrTime[0];
-    minute = arrTime[1];
+    const time = e.target.value;
+    const arrTime = time.split(':');
+    const hour = arrTime[0];
+    const minute = arrTime[1];
 
     if (e.target.name === 'startTime') {
-      seconds = '00';
       startDate.set({
-        hour: parseInt(hour),
-        minute: parseInt(minute),
-        seconds: parseInt('00')
+        hour: parseInt(hour, 10),
+        minute: parseInt(minute, 10),
+        seconds: parseInt('00', 10),
       });
-      onDatesChange({startDate, endDate});
-
+      onDatesChange({ startDate, endDate });
     } else if (e.target.name === 'endTime') {
-      seconds = '59';
       endDate.set({
-        hour: parseInt(hour),
-        minute: parseInt(minute),
-        seconds: parseInt('59')
+        hour: parseInt(hour, 10),
+        minute: parseInt(minute, 10),
+        seconds: parseInt('59', 10),
       });
-      onDatesChange({startDate, endDate});
+      onDatesChange({ startDate, endDate });
     }
   }
 
@@ -289,7 +285,6 @@ export default class DayTimePickerRangeController extends React.Component {
       renderDay,
       startDate,
       endDate,
-      onDatesChange
     } = this.props;
 
     const modifiers = {

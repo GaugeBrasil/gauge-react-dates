@@ -49,7 +49,6 @@ const propTypes = forbidExtraProps({
   modifiers: PropTypes.object,
   renderDay: PropTypes.func,
   onDayClick: PropTypes.func,
-  onTimesChange: PropTypes.func,
   onDayMouseEnter: PropTypes.func,
   onDayMouseLeave: PropTypes.func,
 
@@ -330,7 +329,7 @@ export default class DayTimePicker extends React.Component {
   }
 
   handleTimesChange(e) {
-    this.setState({[e.target.name]: e.target.value});
+    this.setState({ [e.target.name]: e.target.value });
     this.props.onTimesChange(e);
   }
 
@@ -407,7 +406,7 @@ export default class DayTimePicker extends React.Component {
       renderDay,
       onOutsideClick,
       monthFormat,
-      blockTime
+      blockTime,
     } = this.props;
 
     const numOfWeekHeaders = this.isVertical() ? 1 : numberOfMonths;
@@ -495,30 +494,32 @@ export default class DayTimePicker extends React.Component {
           </div>
 
           <div className="DayTimePicker__times">
-              <div className="DayTimePicker__start-time">
-                  <label>Início:</label>
-                  <input
-                    type="time"
-                    name="startTime"
-                    maxLength="5"
-                    value={this.state.startTime}
-                    onChange={this.handleTimesChange}
-                    disabled={blockTime}
-                    required
-                  />
-              </div>
-              <div className="DayTimePicker__end-time">
-                  <label>Fim:</label>
-                    <input
-                      type="time"
-                      name="endTime"
-                      maxLength="5"
-                      value={this.state.endTime}
-                      onChange={this.handleTimesChange}
-                      disabled={blockTime}
-                      required
-                    />
-              </div>
+            <div className="DayTimePicker__start-time">
+              <label htmlFor="startTime">Início:</label>
+              <input
+                type="time"
+                id="startTime"
+                name="startTime"
+                maxLength="5"
+                value={this.state.startTime}
+                onChange={this.handleTimesChange}
+                disabled={blockTime}
+                required
+              />
+            </div>
+            <div className="DayTimePicker__end-time">
+              <label htmlFor="endTime">Fim:</label>
+              <input
+                type="time"
+                id="endTime"
+                name="endTime"
+                maxLength="5"
+                value={this.state.endTime}
+                onChange={this.handleTimesChange}
+                disabled={blockTime}
+                required
+              />
+            </div>
           </div>
         </OutsideClickHandler>
       </div>
