@@ -504,6 +504,7 @@ export default class DayTimePicker extends React.Component {
                     value={this.state.startTime}
                     onChange={this.handleTimesChange}
                     disabled={blockTime}
+                    required
                   />
               </div>
               <div className="DayTimePicker__end-time">
@@ -515,6 +516,7 @@ export default class DayTimePicker extends React.Component {
                       value={this.state.endTime}
                       onChange={this.handleTimesChange}
                       disabled={blockTime}
+                      required
                     />
               </div>
           </div>
