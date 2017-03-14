@@ -132,6 +132,7 @@ export default class DayTimePickerRangeController extends React.Component {
       }
     } else if (focusedInput === END_DATE) {
       const firstAllowedEndDate = startDate && startDate.clone().add(minimumNights, 'days');
+      day.seconds(59);
 
       if (!startDate) {
         endDate = day;
