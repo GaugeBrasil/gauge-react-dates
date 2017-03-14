@@ -50,6 +50,7 @@ const defaultProps = {
   showDefaultInputIcon: false,
   customInputIcon: null,
   customArrowIcon: null,
+  customCloseIcon: null,
 
   // calendar presentation and interaction related props
   orientation: HORIZONTAL_ORIENTATION,
@@ -61,6 +62,7 @@ const defaultProps = {
   numberOfMonths: 2,
   keepOpenOnDateSelect: false,
   reopenPickerOnClearDates: false,
+  renderCalendarInfo: null,
 
   // navigation related props
   navPrev: null,
@@ -221,7 +223,9 @@ export default class DateRangePicker extends React.Component {
       minimumNights,
       keepOpenOnDateSelect,
       renderDay,
+      renderCalendarInfo,
       initialVisibleMonth,
+      customCloseIcon,
     } = this.props;
     const { dayPickerContainerStyles } = this.state;
 
@@ -230,6 +234,8 @@ export default class DateRangePicker extends React.Component {
       : undefined;
     const initialVisibleMonthThunk =
       initialVisibleMonth || (() => (startDate || endDate || moment()));
+
+    const closeIcon = customCloseIcon || (<CloseButton />);
 
     return (
       <div
@@ -261,6 +267,7 @@ export default class DateRangePicker extends React.Component {
           isDayBlocked={isDayBlocked}
           keepOpenOnDateSelect={keepOpenOnDateSelect}
           renderDay={renderDay}
+          renderCalendarInfo={renderCalendarInfo}
         />
 
         {withFullScreenPortal &&
@@ -272,7 +279,9 @@ export default class DateRangePicker extends React.Component {
             <span className="screen-reader-only">
               {this.props.phrases.closeDatePicker}
             </span>
-            <CloseButton />
+            <div className="DateRangePicker__close">
+              {closeIcon}
+            </div>
           </button>
         }
       </div>
@@ -293,6 +302,7 @@ export default class DateRangePicker extends React.Component {
       showDefaultInputIcon,
       customInputIcon,
       customArrowIcon,
+      customCloseIcon,
       disabled,
       required,
       phrases,
@@ -326,6 +336,7 @@ export default class DateRangePicker extends React.Component {
             showDefaultInputIcon={showDefaultInputIcon}
             customInputIcon={customInputIcon}
             customArrowIcon={customArrowIcon}
+            customCloseIcon={customCloseIcon}
             disabled={disabled}
             required={required}
             reopenPickerOnClearDates={reopenPickerOnClearDates}

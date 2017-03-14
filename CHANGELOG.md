@@ -1,5 +1,14 @@
 # Change Log
 
+## v8.2.0
+- [new] Add `renderCalendarInfo` prop to DRP and SDP ([#341](https://github.com/airbnb/react-dates/pull/341))
+
+## v8.1.1
+- [fix] Add missing `customCloseIcon` propType declarations ([#367](https://github.com/airbnb/react-dates/pull/367))
+
+## v8.1.0
+- [new] Add `customCloseIcon` prop ([#356](https://github.com/airbnb/react-dates/pull/356))
+
 ## v8.0.0
 - [fix] Remove `$react-dates-width-day-picker` variable from `CalendarMonthGrid.scss`, allowing overrides ([#352](https://github.com/airbnb/react-dates/pull/352))
 - [new] Create `defaultPhrases` file for i18n ([#351](https://github.com/airbnb/react-dates/pull/351))

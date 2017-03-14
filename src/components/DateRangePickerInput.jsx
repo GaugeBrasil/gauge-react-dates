@@ -42,6 +42,7 @@ const propTypes = forbidExtraProps({
   showDefaultInputIcon: PropTypes.bool,
   customInputIcon: PropTypes.node,
   customArrowIcon: PropTypes.node,
+  customCloseIcon: PropTypes.node,
 
   // i18n
   phrases: PropTypes.shape(getPhrasePropTypes(DateRangePickerInputPhrases)),
@@ -75,6 +76,7 @@ const defaultProps = {
   showDefaultInputIcon: false,
   customInputIcon: null,
   customArrowIcon: null,
+  customCloseIcon: null,
 
   // i18n
   phrases: DateRangePickerInputPhrases,
@@ -131,11 +133,13 @@ export default class DateRangePickerInput extends React.Component {
       showDefaultInputIcon,
       customInputIcon,
       customArrowIcon,
+      customCloseIcon,
       phrases,
     } = this.props;
 
     const inputIcon = customInputIcon || (<CalendarIcon />);
     const arrowIcon = customArrowIcon || (<RightArrow />);
+    const closeIcon = customCloseIcon || (<CloseButton />);
 
     return (
       <div
@@ -204,7 +208,9 @@ export default class DateRangePickerInput extends React.Component {
             <span className="screen-reader-only">
               {phrases.clearDates}
             </span>
-            <CloseButton />
+            <div className="DateRangePickerInput__close-icon">
+              {closeIcon}
+            </div>
           </button>
         }
       </div>

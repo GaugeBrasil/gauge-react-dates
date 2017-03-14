@@ -136,6 +136,11 @@ By default, we do not show days from the previous month and the next month in th
    initialVisibleMonth: PropTypes.func,
 ```
 
+Optionally you can provide calendar caption block renderer.
+```js
+   renderCalendarInfo: PropTypes.func,
+```
+
 **DayPicker presentation:**
 
 The `orientation` prop indicates whether months are stacked on top of each other or displayed side-by-side. You can import the `HORIZONTAL_ORIENTATION` and `VERTICAL_ORIENTATION` constants from `react-dates/constants`.
@@ -187,6 +192,11 @@ Optionally, you can display a React node using `props.customInputIcon`
 To replace the default arrow icon, you may pass a React node to `props.customArrowIcon`.
 ```js
   customArrowIcon: PropTypes.node,
+```
+
+To replace the default close icon, you may pass a React node to `props.customCloseIcon`.
+```js
+  customCloseIcon: PropTypes.node,
 ```
 
 If the `disabled` prop is set to true, onFocusChange is not called when onStartDateFocus or onEndDateFocus are invoked and disabled is assigned to the actual `<input>` DOM elements.

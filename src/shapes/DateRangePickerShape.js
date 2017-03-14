@@ -29,6 +29,7 @@ export default {
   showDefaultInputIcon: PropTypes.bool,
   customInputIcon: PropTypes.node,
   customArrowIcon: PropTypes.node,
+  customCloseIcon: PropTypes.node,
 
   // calendar presentation and interaction related props
   orientation: OrientationShape,
@@ -40,6 +41,7 @@ export default {
   numberOfMonths: PropTypes.number,
   keepOpenOnDateSelect: PropTypes.bool,
   reopenPickerOnClearDates: PropTypes.bool,
+  renderCalendarInfo: PropTypes.func,
 
   // navigation related props
   navPrev: PropTypes.node,

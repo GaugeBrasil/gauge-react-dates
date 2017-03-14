@@ -44,6 +44,7 @@ const defaultProps = {
   required: false,
   screenReaderInputMessage: '',
   showClearDate: false,
+  customCloseIcon: null,
 
   // calendar presentation and interaction related props
   orientation: HORIZONTAL_ORIENTATION,
@@ -55,6 +56,7 @@ const defaultProps = {
   numberOfMonths: 2,
   keepOpenOnDateSelect: false,
   reopenPickerOnClearDate: false,
+  renderCalendarInfo: null,
 
   // navigation related props
   navPrev: null,
@@ -293,8 +295,10 @@ export default class SingleDatePicker extends React.Component {
       withFullScreenPortal,
       focused,
       renderDay,
+      renderCalendarInfo,
       date,
       initialVisibleMonth,
+      customCloseIcon,
     } = this.props;
     const { dayPickerContainerStyles } = this.state;
 
@@ -311,6 +315,7 @@ export default class SingleDatePicker extends React.Component {
 
     const onOutsideClick = (!withFullScreenPortal && withPortal) ? this.onClearFocus : undefined;
     const initialVisibleMonthThunk = initialVisibleMonth || (() => (date || moment()));
+    const closeIcon = customCloseIcon || (<CloseButton />);
 
     return (
       <div
@@ -336,6 +341,7 @@ export default class SingleDatePicker extends React.Component {
           navPrev={navPrev}
           navNext={navNext}
           renderDay={renderDay}
+          renderCalendarInfo={renderCalendarInfo}
         />
 
         {withFullScreenPortal &&
@@ -347,7 +353,9 @@ export default class SingleDatePicker extends React.Component {
             <span className="screen-reader-only">
               {this.props.phrases.closeDatePicker}
             </span>
-            <CloseButton />
+            <div className="SingleDatePicker__close-icon">
+              {closeIcon}
+            </div>
           </button>
         }
       </div>

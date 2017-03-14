@@ -22,6 +22,7 @@ export default {
   required: PropTypes.bool,
   screenReaderInputMessage: PropTypes.string,
   showClearDate: PropTypes.bool,
+  customCloseIcon: PropTypes.node,
 
   // calendar presentation and interaction related props
   orientation: OrientationShape,
@@ -33,6 +34,7 @@ export default {
   numberOfMonths: PropTypes.number,
   keepOpenOnDateSelect: PropTypes.bool,
   reopenPickerOnClearDate: PropTypes.bool,
+  renderCalendarInfo: PropTypes.func,
 
   // navigation related props
   navPrev: PropTypes.node,
