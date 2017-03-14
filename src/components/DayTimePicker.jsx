@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import shallowCompare from 'react-addons-shallow-compare';
 import ReactDOM from 'react-dom';
+import momentPropTypes from 'react-moment-proptypes';
 import { forbidExtraProps } from 'airbnb-prop-types';
 import moment from 'moment';
 import cx from 'classnames';
@@ -51,6 +52,11 @@ const propTypes = forbidExtraProps({
   onTimeChange: PropTypes.func,
   onDayMouseEnter: PropTypes.func,
   onDayMouseLeave: PropTypes.func,
+
+  // date props
+  startDate: momentPropTypes.momentObj,
+  endDate: momentPropTypes.momentObj,
+  onDatesChange: PropTypes.func,
 
   // internationalization
   monthFormat: PropTypes.string,
@@ -166,6 +172,14 @@ export default class DayTimePicker extends React.Component {
     if (this.isHorizontal()) {
       this.adjustDayPickerHeight();
       this.initializeDayPickerWidth();
+    }
+
+    if (!this.state.startTime && this.props.startDate) {
+        this.setState({startTime: this.props.startDate.format('HH:mm')})
+    }
+
+    if (!this.state.endTime && this.props.endDate) {
+        this.setState({endTime: this.props.endDate.format('HH:mm')})
     }
   }
 
@@ -321,8 +335,39 @@ export default class DayTimePicker extends React.Component {
   }
 
   onTimeChange(e) {
-    this.setState({[e.target.name]: e.target.value});
-    this.props.onTimeChange(e.target.value, e);
+    let hour, minute, time, arrTime;
+    let {
+      startDate,
+      endDate,
+      onDatesChange
+    } = this.props;
+
+    time = e.target.value;
+    arrTime = time.split(':');
+    hour = arrTime[0];
+    minute = arrTime[1];
+
+    if (e.target.name === 'startTime') {
+      seconds = '00';
+      startDate.set({
+        hour: parseInt(hour),
+        minute: parseInt(minute),
+        seconds: parseInt('00')
+      });
+
+      onDatesChange({startDate, endDate});
+
+    } else if (e.target.name === 'endTime') {
+      seconds = '59';
+      endDate.set({
+        hour: parseInt(hour),
+        minute: parseInt(minute),
+        seconds: parseInt('59')
+      });
+      onDatesChange({startDate, endDate});
+    }
+
+    this.setState({[e.target.name]: time});
   }
 
   renderNavigation() {

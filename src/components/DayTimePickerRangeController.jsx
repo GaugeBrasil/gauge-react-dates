@@ -104,7 +104,6 @@ export default class DayTimePickerRangeController extends React.Component {
     this.today = moment();
 
     this.onDayClick = this.onDayClick.bind(this);
-    this.onTimeChange = this.onTimeChange.bind(this);
     this.onDayMouseEnter = this.onDayMouseEnter.bind(this);
     this.onDayMouseLeave = this.onDayMouseLeave.bind(this);
   }
@@ -145,50 +144,6 @@ export default class DayTimePickerRangeController extends React.Component {
     }
 
     this.props.onDatesChange({ startDate, endDate });
-  }
-
-  onTimeChange(time, e) {
-    let momentTime;
-    let {
-      startDate,
-      endDate
-    } = this.props;
-
-    momentTime = this.convertToMoment(time);
-    if (startDate && e.target.name === 'startTime') {
-      momentTime.second(0);
-      startDate = this.concatDateTime(startDate, momentTime);
-
-    } else if (endDate && e.target.name === 'endTime') {
-      momentTime.second(59);
-      endDate = this.concatDateTime(endDate, momentTime);
-    }
-  }
-
-  convertToMoment(time) {
-    let hour, minute, seconds, arrTime;
-
-    arrTime = time.split(':');
-    hour = arrTime[0];
-    minute = arrTime[1];
-    seconds = arrTime[2] ? arrTime[2] : '00';
-
-    return moment().set({
-      hour: parseInt(hour),
-      minute: parseInt(minute),
-      seconds: parseInt(seconds)
-    })
-  }
-
-  concatDateTime(date, time) {
-    let datetime;
-    datetime = date.clone();
-    datetime.set({
-      hour: parseInt(time.hour()),
-      minute: parseInt(time.minute()),
-      seconds: parseInt(time.seconds())
-    });
-    return datetime;
   }
 
   onDayMouseEnter(day) {
@@ -289,6 +244,9 @@ export default class DayTimePickerRangeController extends React.Component {
       initialVisibleMonth,
       focusedInput,
       renderDay,
+      startDate,
+      endDate,
+      onDatesChange
     } = this.props;
 
     const modifiers = {
@@ -321,7 +279,9 @@ export default class DayTimePickerRangeController extends React.Component {
         modifiers={modifiers}
         numberOfMonths={numberOfMonths}
         onDayClick={this.onDayClick}
-        onTimeChange={this.onTimeChange}
+        startDate={startDate}
+        endDate={endDate}
+        onDatesChange={onDatesChange}
         onDayMouseEnter={this.onDayMouseEnter}
         onDayMouseLeave={this.onDayMouseLeave}
         onPrevMonthClick={onPrevMonthClick}
