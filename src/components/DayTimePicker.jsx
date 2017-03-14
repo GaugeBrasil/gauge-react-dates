@@ -166,6 +166,8 @@ export default class DayTimePicker extends React.Component {
     this.multiplyScrollableMonths = this.multiplyScrollableMonths.bind(this);
     this.updateStateAfterMonthTransition = this.updateStateAfterMonthTransition.bind(this);
     this.onTimeChange = this.onTimeChange.bind(this);
+    this.isTimeBlocked = this.isTimeBlocked.bind(this);
+
   }
 
   componentDidMount() {
@@ -370,6 +372,13 @@ export default class DayTimePicker extends React.Component {
     this.setState({[e.target.name]: time});
   }
 
+  isTimeBlocked() {
+    if (this.props.startDate && this.props.endDate)
+      return false
+    else
+      return true;
+  }
+
   renderNavigation() {
     const {
       navPrev,
@@ -538,6 +547,7 @@ export default class DayTimePicker extends React.Component {
                     maxLength="5"
                     value={this.state.startTime}
                     onChange={this.onTimeChange}
+                    disabled={this.isTimeBlocked()}
                   />
               </div>
               <div className="DayTimePicker__end-time">
@@ -548,6 +558,7 @@ export default class DayTimePicker extends React.Component {
                       maxLength="5"
                       value={this.state.endTime}
                       onChange={this.onTimeChange}
+                      disabled={this.isTimeBlocked()}
                     />
               </div>
           </div>
