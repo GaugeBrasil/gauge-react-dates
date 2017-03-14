@@ -49,14 +49,17 @@ const propTypes = forbidExtraProps({
   modifiers: PropTypes.object,
   renderDay: PropTypes.func,
   onDayClick: PropTypes.func,
-  onTimeChange: PropTypes.func,
+  onTimesChange: PropTypes.func,
   onDayMouseEnter: PropTypes.func,
   onDayMouseLeave: PropTypes.func,
 
   // date props
   startDate: momentPropTypes.momentObj,
   endDate: momentPropTypes.momentObj,
-  onDatesChange: PropTypes.func,
+
+  // time props
+  onTimesChange: PropTypes.func,
+  blockTime: PropTypes.bool,
 
   // internationalization
   monthFormat: PropTypes.string,
@@ -165,7 +168,7 @@ export default class DayTimePicker extends React.Component {
     this.onNextMonthClick = this.onNextMonthClick.bind(this);
     this.multiplyScrollableMonths = this.multiplyScrollableMonths.bind(this);
     this.updateStateAfterMonthTransition = this.updateStateAfterMonthTransition.bind(this);
-    this.onTimeChange = this.onTimeChange.bind(this);
+    this.handleTimesChange = this.handleTimesChange.bind(this);
   }
 
   componentDidMount() {
@@ -334,40 +337,9 @@ export default class DayTimePicker extends React.Component {
     );
   }
 
-  onTimeChange(e) {
-    let hour, minute, time, arrTime;
-    let {
-      startDate,
-      endDate,
-      onDatesChange
-    } = this.props;
-
-    time = e.target.value;
-    arrTime = time.split(':');
-    hour = arrTime[0];
-    minute = arrTime[1];
-
-    if (e.target.name === 'startTime') {
-      seconds = '00';
-      startDate.set({
-        hour: parseInt(hour),
-        minute: parseInt(minute),
-        seconds: parseInt('00')
-      });
-
-      onDatesChange({startDate, endDate});
-
-    } else if (e.target.name === 'endTime') {
-      seconds = '59';
-      endDate.set({
-        hour: parseInt(hour),
-        minute: parseInt(minute),
-        seconds: parseInt('59')
-      });
-      onDatesChange({startDate, endDate});
-    }
-
-    this.setState({[e.target.name]: time});
+  handleTimesChange(e) {
+    this.setState({[e.target.name]: e.target.value});
+    this.props.onTimesChange(e);
   }
 
   renderNavigation() {
@@ -538,7 +510,7 @@ export default class DayTimePicker extends React.Component {
                     name="startTime"
                     maxLength="5"
                     value={this.state.startTime}
-                    onChange={this.onTimeChange}
+                    onChange={this.handleTimesChange}
                     disabled={blockTime}
                   />
               </div>
@@ -549,7 +521,7 @@ export default class DayTimePicker extends React.Component {
                       name="endTime"
                       maxLength="5"
                       value={this.state.endTime}
-                      onChange={this.onTimeChange}
+                      onChange={this.handleTimesChange}
                       disabled={blockTime}
                     />
               </div>

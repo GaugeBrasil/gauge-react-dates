@@ -107,6 +107,7 @@ export default class DayTimePickerRangeController extends React.Component {
     this.onDayMouseEnter = this.onDayMouseEnter.bind(this);
     this.onDayMouseLeave = this.onDayMouseLeave.bind(this);
     this.isTimeBlocked = this.isTimeBlocked.bind(this);
+    this.handleTimesChange = this.handleTimesChange.bind(this);
   }
 
   componentWillUpdate() {
@@ -234,6 +235,40 @@ export default class DayTimePickerRangeController extends React.Component {
       return true;
   }
 
+  handleTimesChange(e) {
+    let hour, minute, time, arrTime;
+    let {
+      startDate,
+      endDate,
+      onDatesChange
+    } = this.props;
+
+    time = e.target.value;
+    arrTime = time.split(':');
+    hour = arrTime[0];
+    minute = arrTime[1];
+
+    if (e.target.name === 'startTime') {
+      seconds = '00';
+      startDate.set({
+        hour: parseInt(hour),
+        minute: parseInt(minute),
+        seconds: parseInt('00')
+      });
+
+      onDatesChange({startDate, endDate});
+
+    } else if (e.target.name === 'endTime') {
+      seconds = '59';
+      endDate.set({
+        hour: parseInt(hour),
+        minute: parseInt(minute),
+        seconds: parseInt('59')
+      });
+      onDatesChange({startDate, endDate});
+    }
+  }
+
   render() {
     const {
       isDayBlocked,
@@ -290,7 +325,7 @@ export default class DayTimePickerRangeController extends React.Component {
         startDate={startDate}
         endDate={endDate}
         blockTime={this.isTimeBlocked()}
-        onDatesChange={onDatesChange}
+        onTimesChange={this.handleTimesChange}
         onDayMouseEnter={this.onDayMouseEnter}
         onDayMouseLeave={this.onDayMouseLeave}
         onPrevMonthClick={onPrevMonthClick}
