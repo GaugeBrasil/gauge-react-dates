@@ -4,9 +4,6 @@ import { storiesOf } from '@kadira/storybook';
 
 import DateTimeRangePickerWrapper from '../examples/DateTimeRangePickerWrapper';
 
-
-
-
 const TestInput = props => (
   <div style={{ marginTop: 16 }}>
     <input
@@ -44,7 +41,7 @@ class TestWrapper extends React.Component {
         </button>
 
         <div style={{ display }}>
-          <DateTimeRangePickerWrapper />
+          <DateTimeRangePickerWrapper keepOpenOnDateSelect />
         </div>
       </div>
     );
@@ -53,17 +50,17 @@ class TestWrapper extends React.Component {
 
 storiesOf('DateTimeRangePicker (DTRP)', module)
   .addWithInfo('default', () => (
-    <DateTimeRangePickerWrapper />
+    <DateTimeRangePickerWrapper keepOpenOnDateSelect/>
   ))
   .addWithInfo('3 months', () => (
-    <DateTimeRangePickerWrapper numberOfMonths={3} />
+    <DateTimeRangePickerWrapper numberOfMonths={3} keepOpenOnDateSelect/>
   ))
   .addWithInfo('hidden with display: none', () => (
     <TestWrapper />
   ))
   .addWithInfo('as part of a form', () => (
     <div>
-      <DateTimeRangePickerWrapper />
+      <DateTimeRangePickerWrapper keepOpenOnDateSelect/>
       <TestInput placeholder="Input 1" />
       <TestInput placeholder="Input 2" />
       <TestInput placeholder="Input 3" />
@@ -81,6 +78,7 @@ storiesOf('DateTimeRangePicker (DTRP)', module)
           closeDatePicker: '关闭',
           clearDates: '清除日期',
         }}
+        keepOpenOnDateSelect
       />
     );
   });
