@@ -160,8 +160,8 @@ export default class DayTimePicker extends React.Component {
       monthTransition: null,
       translationValue: 0,
       scrollableMonthMultiple: 1,
-      startTime: '',
-      endTime: ''
+      startTime: props.startDate ? props.startDate.format('HH:mm') : '',
+      endTime: props.endDate ? props.endDate.format('HH:mm') : '',
     };
 
     this.onPrevMonthClick = this.onPrevMonthClick.bind(this);
@@ -175,14 +175,6 @@ export default class DayTimePicker extends React.Component {
     if (this.isHorizontal()) {
       this.adjustDayPickerHeight();
       this.initializeDayPickerWidth();
-    }
-
-    if (!this.state.startTime && this.props.startDate) {
-        this.setState({startTime: this.props.startDate.format('HH:mm')})
-    }
-
-    if (!this.state.endTime && this.props.endDate) {
-        this.setState({endTime: this.props.endDate.format('HH:mm')})
     }
   }
 
