@@ -106,6 +106,7 @@ export default class DayTimePickerRangeController extends React.Component {
     this.onDayClick = this.onDayClick.bind(this);
     this.onDayMouseEnter = this.onDayMouseEnter.bind(this);
     this.onDayMouseLeave = this.onDayMouseLeave.bind(this);
+    this.isTimeBlocked = this.isTimeBlocked.bind(this);
   }
 
   componentWillUpdate() {
@@ -226,6 +227,13 @@ export default class DayTimePickerRangeController extends React.Component {
     return isSameDay(day, this.today);
   }
 
+  isTimeBlocked() {
+    if (this.props.startDate && this.props.endDate)
+      return false
+    else
+      return true;
+  }
+
   render() {
     const {
       isDayBlocked,
@@ -281,6 +289,7 @@ export default class DayTimePickerRangeController extends React.Component {
         onDayClick={this.onDayClick}
         startDate={startDate}
         endDate={endDate}
+        blockTime={this.isTimeBlocked()}
         onDatesChange={onDatesChange}
         onDayMouseEnter={this.onDayMouseEnter}
         onDayMouseLeave={this.onDayMouseLeave}
