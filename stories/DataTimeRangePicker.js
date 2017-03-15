@@ -50,35 +50,34 @@ class TestWrapper extends React.Component {
 
 storiesOf('DateTimeRangePicker (DTRP)', module)
   .addWithInfo('default', () => (
-    <DateTimeRangePickerWrapper keepOpenOnDateSelect/>
+    <DateTimeRangePickerWrapper />
   ))
   .addWithInfo('3 months', () => (
-    <DateTimeRangePickerWrapper numberOfMonths={3} keepOpenOnDateSelect/>
+    <DateTimeRangePickerWrapper numberOfMonths={3} keepOpenOnDateSelect />
   ))
   .addWithInfo('hidden with display: none', () => (
     <TestWrapper />
   ))
   .addWithInfo('as part of a form', () => (
     <div>
-      <DateTimeRangePickerWrapper keepOpenOnDateSelect/>
+      <DateTimeRangePickerWrapper keepOpenOnDateSelect />
       <TestInput placeholder="Input 1" />
       <TestInput placeholder="Input 2" />
       <TestInput placeholder="Input 3" />
     </div>
   ))
-  .addWithInfo('non-english locale', () => {
-    moment.locale('zh-cn');
+  .addWithInfo('inside a container with scroll', () => {
+    const styles = {
+      width: '300px',
+      height: '600px',
+      backgroundColor: '#fff',
+      overflowY: 'auto',
+      overflowX: 'hidden'
+    }
+
     return (
-      <DateTimeRangePickerWrapper
-        showClearDates
-        startDatePlaceholderText="入住日期"
-        endDatePlaceholderText="退房日期"
-        monthFormat="YYYY[年]MMMM"
-        phrases={{
-          closeDatePicker: '关闭',
-          clearDates: '清除日期',
-        }}
-        keepOpenOnDateSelect
-      />
+      <div style={ styles }>
+        <DateTimeRangePickerWrapper keepOpenOnDateSelect />
+      </div>
     );
   });
