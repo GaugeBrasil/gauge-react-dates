@@ -203,6 +203,21 @@ export default class DayTimePicker extends React.Component {
         this.adjustDayPickerHeight();
       }
     }
+
+    let startDate = this.props.startDate;
+    let endDate = this.props.endDate;
+    const startTime = this.state.startTime;
+    const endTime = this.state.endTime;
+
+    startDate = startDate ? startDate.format('HH:mm') : '';
+    if (startDate && startTime && startDate !== startTime) {
+      this.setState({startTime: startDate})
+    }
+
+    endDate = endDate ? endDate.format('HH:mm') : '';
+    if (endDate && endTime && endDate !== endTime) {
+      this.setState({endTime: endDate})
+    }
   }
 
   onPrevMonthClick(e) {
