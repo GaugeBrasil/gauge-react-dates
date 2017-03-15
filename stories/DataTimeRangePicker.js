@@ -66,7 +66,7 @@ storiesOf('DateTimeRangePicker (DTRP)', module)
       <TestInput placeholder="Input 3" />
     </div>
   ))
-  .addWithInfo('inside a container with scroll', () => {
+  .addWithInfo('3 months in fullscreen', () => {
     const styles = {
       width: '300px',
       height: '600px',
@@ -77,7 +77,11 @@ storiesOf('DateTimeRangePicker (DTRP)', module)
 
     return (
       <div style={ styles }>
-        <DateTimeRangePickerWrapper keepOpenOnDateSelect />
+        <DateTimeRangePickerWrapper
+          keepOpenOnDateSelect
+          numberOfMonths={3}
+          withPortal
+        />
       </div>
     );
   });
