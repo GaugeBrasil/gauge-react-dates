@@ -248,14 +248,14 @@ export default class DayTimePickerRangeController extends React.Component {
     const hour = arrTime[0];
     const minute = arrTime[1];
 
-    if (e.target.name === 'startTime') {
+    if (time && e.target.name === 'startTime') {
       startDate.set({
         hour: parseInt(hour, 10),
         minute: parseInt(minute, 10),
         seconds: parseInt('00', 10),
       });
       onDatesChange({ startDate, endDate });
-    } else if (e.target.name === 'endTime') {
+    } else if (time && e.target.name === 'endTime') {
       endDate.set({
         hour: parseInt(hour, 10),
         minute: parseInt(minute, 10),
