@@ -168,6 +168,8 @@ export default class DayTimePicker extends React.Component {
     this.multiplyScrollableMonths = this.multiplyScrollableMonths.bind(this);
     this.updateStateAfterMonthTransition = this.updateStateAfterMonthTransition.bind(this);
     this.handleTimesChange = this.handleTimesChange.bind(this);
+    this.updateStartTime = this.updateStartTime.bind(this);
+    this.updateEndTime = this.updateEndTime.bind(this);
   }
 
   componentDidMount() {
@@ -210,14 +212,9 @@ export default class DayTimePicker extends React.Component {
     const endTime = this.state.endTime;
 
     startDate = startDate ? startDate.format('HH:mm') : '';
-    if (startDate && startDate !== startTime) {
-      this.setState({startTime: startDate})
-    }
-
+    this.updateStartTime(startDate, startTime);
     endDate = endDate ? endDate.format('HH:mm') : '';
-    if (endDate && endDate !== endTime) {
-      this.setState({endTime: endDate})
-    }
+    this.updateEndTime(endDate, endTime);
   }
 
   onPrevMonthClick(e) {
@@ -346,6 +343,18 @@ export default class DayTimePicker extends React.Component {
   handleTimesChange(e) {
     this.setState({ [e.target.name]: e.target.value });
     this.props.onTimesChange(e);
+  }
+
+  updateStartTime(startDate, startTime) {
+    if (startDate && startDate !== startTime) {
+      this.setState({ startTime: startDate });
+    }
+  }
+
+  updateEndTime(endDate, endTime) {
+    if (endDate && endDate !== endTime) {
+      this.setState({ endTime: endDate });
+    }
   }
 
   renderNavigation() {
