@@ -210,12 +210,12 @@ export default class DayTimePicker extends React.Component {
     const endTime = this.state.endTime;
 
     startDate = startDate ? startDate.format('HH:mm') : '';
-    if (startDate && startTime && startDate !== startTime) {
+    if (startDate && startDate !== startTime) {
       this.setState({startTime: startDate})
     }
 
     endDate = endDate ? endDate.format('HH:mm') : '';
-    if (endDate && endTime && endDate !== endTime) {
+    if (endDate && endDate !== endTime) {
       this.setState({endTime: endDate})
     }
   }
