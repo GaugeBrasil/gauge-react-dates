@@ -81,6 +81,9 @@ storiesOf('DateTimeRangePicker (DTRP)', module)
           keepOpenOnDateSelect
           numberOfMonths={3}
           withPortal
+          minimumNights={0}
+          initialVisibleMonth={() => moment().subtract(2, 'months')}
+          isOutsideRange={() => false}
         />
       </div>
     );
