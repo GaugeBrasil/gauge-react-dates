@@ -146,6 +146,7 @@ export default class DayTimePickerRangeController extends React.Component {
         this.props.onFocusChange(START_DATE);
       } else if (isInclusivelyAfterDay(day, firstAllowedEndDate)) {
         endDate = dayClone;
+        this.props.onFocusChange(START_DATE);
         if (!keepOpenOnDateSelect) this.props.onFocusChange(null);
       } else {
         startDate = dayClone;
