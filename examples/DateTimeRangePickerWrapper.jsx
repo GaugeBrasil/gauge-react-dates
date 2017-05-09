@@ -127,6 +127,8 @@ class DateTimeRangePickerWrapper extends React.Component {
           focusedInput={focusedInput}
           startDate={startDate}
           endDate={endDate}
+          minimumNights={0}
+          isOutsideRange={() => false}
         />
       </div>
     );
