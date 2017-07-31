@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import momentPropTypes from 'react-moment-proptypes';
 import moment from 'moment';
-import omit from 'lodash.omit';
+import omit from 'lodash/omit';
 
 import DateTimeRangePicker from '../src/components/DateTimeRangePicker';
 
