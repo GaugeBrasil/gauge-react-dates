@@ -1,5 +1,5 @@
 import React from 'react';
-import { storiesOf } from '@kadira/storybook';
+import { storiesOf } from '@storybook/react';
 import DayPicker from '../src/components/DayPicker';
 
 import {
@@ -19,6 +19,7 @@ const TestPrevIcon = () => (
     Prev
   </span>
 );
+
 const TestNextIcon = () => (
   <span
     style={{
@@ -48,8 +49,14 @@ storiesOf('DayPicker', module)
   .addWithInfo('default', () => (
     <DayPicker />
   ))
-  .addWithInfo('more than one month', () => (
-    <DayPicker numberOfMonths={2} />
+  .addWithInfo('with custom day size', () => (
+    <DayPicker daySize={50} />
+  ))
+  .addWithInfo('single month', () => (
+    <DayPicker numberOfMonths={1} />
+  ))
+  .addWithInfo('3 months', () => (
+    <DayPicker numberOfMonths={3} />
   ))
   .addWithInfo('vertical', () => (
     <DayPicker
@@ -58,15 +65,24 @@ storiesOf('DayPicker', module)
     />
   ))
   .addWithInfo('vertically scrollable with 12 months', () => (
-    <div style={{
-      height: '568px',
-      width: '320px',
-    }}>
+    <div
+      style={{
+        height: 568,
+        width: 320,
+      }}
+    >
       <DayPicker
         numberOfMonths={12}
         orientation={VERTICAL_SCROLLABLE}
       />
     </div>
+  ))
+  .addWithInfo('vertical with custom day size', () => (
+    <DayPicker
+      numberOfMonths={2}
+      orientation={VERTICAL_ORIENTATION}
+      daySize={50}
+    />
   ))
   .addWithInfo('with custom arrows', () => (
     <DayPicker

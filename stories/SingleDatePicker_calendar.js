@@ -1,6 +1,6 @@
 import React from 'react';
 import moment from 'moment';
-import { storiesOf } from '@kadira/storybook';
+import { storiesOf } from '@storybook/react';
 
 import SingleDatePickerWrapper from '../examples/SingleDatePickerWrapper';
 
@@ -54,6 +54,9 @@ storiesOf('SDP - Calendar Props', module)
       autoFocus
     />
   ))
+  .addWithInfo('with custom day size', () => (
+    <SingleDatePickerWrapper daySize={50} autoFocus />
+  ))
   .addWithInfo('anchored right', () => (
     <div style={{ float: 'right' }}>
       <SingleDatePickerWrapper
@@ -92,7 +95,7 @@ storiesOf('SDP - Calendar Props', module)
   ))
   .addWithInfo('with month specified on open', () => (
     <SingleDatePickerWrapper
-      initialVisibleMonth={() => moment('01 2017', 'MM YYYY')}
+      initialVisibleMonth={() => moment().add(10, 'months')}
       autoFocus
     />
   ))
@@ -117,4 +120,23 @@ storiesOf('SDP - Calendar Props', module)
       )}
       autoFocus
     />
+  ))
+  .addWithInfo('with keyboard shorcuts panel hidden', () => (
+    <SingleDatePickerWrapper
+      hideKeyboardShortcutsPanel
+      autoFocus
+    />
+  ))
+  .addWithInfo('with RTL support', () => (
+    <SingleDatePickerWrapper
+      isRTL
+      autoFocus
+    />
+  ))
+  .addWithInfo('with custom first day of week', () => (
+    <SingleDatePickerWrapper
+      firstDayOfWeek={3}
+      autoFocus
+    />
   ));
+

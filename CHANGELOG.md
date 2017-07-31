@@ -1,5 +1,84 @@
 # Change Log
 
+## 12.3.0
+- [fix] Allows users to type in same-day start date and end date when `minimumNights` is 0 ([#555](https://github.com/airbnb/react-dates/pull/555))
+- [new] Add `firstDayOfWeek` prop ([#371](https://github.com/airbnb/react-dates/pull/371))
+- [fix] Add back `phrases` support for `SingleDatePicker` ([#623](https://github.com/airbnb/react-dates/pull/623))
+
+## 12.2.4
+- [fix] Fix `initialVisibleMonth` error in the `DayPickerRangeController` component ([#617](https://github.com/airbnb/react-dates/pull/617))
+- [fix] Pass through missing `keepOpenOnDateSelect` prop to the `DayPickerSingleDateController` component ([#620](https://github.com/airbnb/react-dates/pull/620))
+
+## 12.2.3
+- [fix] Export `DayPickerSingleDateController` in index.js ([#609](https://github.com/airbnb/react-dates/pull/609))
+
+## 12.2.2
+- [fix] Reevaluate `--blocked` and `--blocked-outside-range` modifiers in the SDP componentWilLReceiveProps ([#550](https://github.com/airbnb/react-dates/pull/550))
+
+## 12.2.1
+- [fix] Fix `isTouchDevice` warning in `DayPickerSingleDateController` ([77e2135](https://github.com/airbnb/react-dates/commit/77e2135d2009994fbf2c62e3ff68ce82e5786194))
+
+## v12.2.0
+- [fix] Deprecate `isTouchDevice` in favor of `is-touch-device` ([#576](https://github.com/airbnb/react-dates/pull/576))
+- [fix] Disable calendar icon when component is disabled ([#591](https://github.com/airbnb/react-dates/pull/591))
+- [fix] Fix issue where range does not clear on invisible months ([#575](https://github.com/airbnb/react-dates/pull/575))
+- [new] Add `DayPickerSingleDateController` component ([#573](https://github.com/airbnb/react-dates/pull/573))
+
+## v12.1.2
+- [fix] Add null check for calendarMonthGrid ref ([#552](https://github.com/airbnb/react-dates/pull/552))
+
+## v12.1.1
+- [fix] Remove `--hovered-span` modifier when selecting a new end date ([#523](https://github.com/airbnb/react-dates/pull/523))
+- [fix] Improve `isTouchDevice` detection logic ([#516](https://github.com/airbnb/react-dates/pull/516))
+- [fix] Recompute `--blocked` and `--blocked-outside-range` when `focusedInput` changes ([#522](https://github.com/airbnb/react-dates/pull/522))
+
+## v12.1.0
+- [new] Add `showDefaultInputIcon` and `customInputIcon` props to SDP ([#513](https://github.com/airbnb/react-dates/pull/513))
+
+## v12.0.0
+- [breaking] Updates moment peer dependency to ^2.18.1 ([#505](https://github.com/airbnb/react-dates/pull/505))
+
+## v11.1.0
+- [fix] Patch issues with vertical scrollable datepickers, after-hovered-start and month transitions ([#503](https://github.com/airbnb/react-dates/pull/503))
+- [new] Adds a `readOnly` prop on the DRP and SDP ([#501](https://github.com/airbnb/react-dates/pull/501))
+- [fix] Disable hover when `focusedInput` is falsey ([#483](https://github.com/airbnb/react-dates/pull/483))
+
+## v11.0.1
+- [fix] Fixes small modifier issues in the DRP after rearchitecture ([#489](https://github.com/airbnb/react-dates/pull/489))
+
+## v11.0.0
+- [breaking] Dramatic rearchitecture of modifiers with the goal of improved performance ([#450](https://github.com/airbnb/react-dates/pull/450))
+
+## v10.2.0
+- [new] Add RTL support to the DRP and the SDP with the `isRTL` prop ([#454](https://github.com/airbnb/react-dates/pull/454))
+- [new] Add `renderMonth` prop to DRP and SDP([#449](https://github.com/airbnb/react-dates/pull/449))
+
+## v10.1.2
+- [fix] Remove unused scss variables ([#475](https://github.com/airbnb/react-dates/pull/475))
+- [fix] Address some issues introduced by the accessibility PR in v10.0.0 ([#477](https://github.com/airbnb/react-dates/pull/477))
+- [fix] Only update phrase object in the DRP when necessary ([#448](https://github.com/airbnb/react-dates/pull/448))
+
+## v10.1.1
+- [fix] Remove unnecessary `onClose` instances on the `SDPInput` and `DateInput` components
+
+## v10.1.0
+- [new] Add `onClose` callback ([#397](https://github.com/airbnb/react-dates/pull/397))
+
+## v10.0.1
+- [fix] Fix a few nits as a result of the accessibility PR ([#429](https://github.com/airbnb/react-dates/pull/429))
+
+## v10.0.0
+- [breaking] Add keyboard accessibility to react-dates ([#301](https://github.com/airbnb/react-dates/pull/301))
+
+## v9.0.1
+- [fix] Fixes `withPortal` implementation in Firefox ([#421](https://github.com/airbnb/react-dates/pull/421))
+
+## v9.0.0
+- [fix] Only send down relevant modifiers down the tree ([#412](https://github.com/airbnb/react-dates/pull/412))
+- [fix] Optimise `isSameDay` method ([#415](https://github.com/airbnb/react-dates/pull/415))
+- [fix] Blur input for portal implementations (and on touch devices) ([#410](https://github.com/airbnb/react-dates/pull/410))
+- [breaking] Add `daySize` prop to scale the pickers properly ([#406](https://github.com/airbnb/react-dates/pull/406))
+
 ## v8.2.1
 - [fix] Add `needsclick` to inputs to disable fastclick ([#377](https://github.com/airbnb/react-dates/pull/377))
 - [deps] Update `style-loader`, `sinon`, `babel-loader`, `coveralls`, and `karma-webpack` ([#379](https://github.com/airbnb/react-dates/pull/379), [#372](https://github.com/airbnb/react-dates/pull/372), [#373](https://github.com/airbnb/react-dates/pull/373))
